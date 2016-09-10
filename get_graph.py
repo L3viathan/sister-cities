@@ -37,6 +37,8 @@ try:
         j = r.json()
         if j["success"] != 1:
             continue
+        if not j.get("entities", False):
+            continue
         for current_city in j["entities"]:
             name = get_name(j["entities"][current_city]["labels"], pref_langs)
             if name:
